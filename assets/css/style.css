@@ -1,0 +1,166 @@
+  :root {
+            --primary-blue: #070136ff;
+            --secondary-blue: #1b05e4ff;
+            --light-blue: #f2f8feff;
+        }
+
+        body {
+            background-color: var(--light-blue);
+            font-family: 'Segoe UI', sans-serif;
+            color: #1626d8ff ;
+        }
+
+        /* Header Gradient Section */
+        .header-section {
+            background: linear-gradient(135deg, #1b05e4ff 0%, #070136ff 100%);
+            padding: 50px 20px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 20px rgba(9, 9, 224, 0.35);
+            margin-bottom: -60px;
+        }
+
+        .header-section h1 { font-weight: 800; letter-spacing: 1px; margin-top: 10px; }
+        .header-section p { font-size: 0.9rem; opacity: 0.9; }
+
+        /* Main Card Container */
+        .main-container {
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            padding: 0 15px;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 10px 25px rgba(15, 3, 79, 0.61);
+        }
+
+        .form-label { font-weight: 700; font-size: 0.75rem; color: #0f54b5ff ; text-transform: uppercase; margin-bottom: 8px; }
+        
+        .form-control, .form-select {
+            background-color: #f7f4f5ff;
+            border: 1px solid #0a1177ff ;
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 0.9rem;
+        }
+
+        /* Camera Viewfinder */
+        #camera, #canvas {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 15px;
+            background: #2908fa96;
+            margin: 10px auto;
+            border: 3px solid #070136ff ;
+            box-shadow: 0 5px 15px rgba(14, 2, 76, 0.87);
+        }
+        #canvas { display: none; }
+
+        /* Custom Blue Buttons */
+        .btn-blue { background-color: #1b05e4ff; color: white; border-radius: 10px; font-weight: 600; padding: 10px 20px; border: none; }
+        .btn-blue:hover { background-color: #070136ff; color: white; }
+        
+        .btn-simpan {
+            background: linear-gradient(to right, #1b05e4ff, #070136ff);
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 20px;
+            box-shadow: 0 4px 15px rgba(0,114,255,0.3);
+        }
+
+        .input-group-text { background-color: #0d15f8ff; color: white; border: none; border-radius: 10px !important; margin-left: 5px; cursor: pointer; }
+        
+        .btn-logout { position: absolute; top: 20px; right: 20px; color: white; text-decoration: none; font-weight: 600; }
+
+    /* Container Tabel agar sudut membulat sempurna */
+.history-container {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(221, 210, 210, 0.9);
+    margin-top: 30px;
+}
+
+/* Container Utama */
+.history-container {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(14, 5, 143, 0.86);
+    margin-top: 30px;
+    border: 1px solid #ddd;
+}
+
+/* Header Tabel dengan Gradasi Biru sesuai gambar */
+.table-siampp thead {
+    /* Gradasi dari Biru Terang ke Biru Tua */
+    background: linear-gradient(to right, #1b05e4ff, #070136ff, #1b05e4ff, #070136ff) !important;
+    color: white !important;
+}
+
+.table-siampp th {
+    background: transparent !important; /* Agar warna gradient di thead terlihat */
+    padding: 15px !important;
+    text-align: center !important;
+    font-size: 0.85rem !important;
+    text-transform: uppercase !important;
+    font-weight: bold !important;
+    border: none !important;
+    color: white !important;
+}
+
+/* Garis pemisah antar kolom di header*/
+.table-siampp th:not(:last-child) {
+    border-right: 1px solid rgba(255, 255, 255, 0.21) !important;
+}
+
+/* Baris Tabel */
+.table-siampp td {
+    padding: 12px 15px !important;
+    border-bottom: 1px solid #1301b9ff !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    color: #0b025cff !important;
+}
+/* Warna Navy Gelap untuk semua tombol aksi utama */
+.btn-navy-custom {
+    background-color: #000033 !important; /* Navy gelap sesuai gambar */
+    color: white !important;
+    border-radius: 12px !important; /* Sudut membulat halus */
+    padding: 10px 20px !important;
+    font-weight: 600 !important;
+    border: none !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px; /* Menjaga ukuran tombol agar seragam */
+    transition: all 0.3s ease;
+}
+
+.btn-navy-custom i {
+    margin-right: 8px; /* Jarak antara ikon dan teks */
+}
+
+.btn-navy-custom:hover {
+    background-color: #000055 !important;
+    transform: translateY(-1px);
+}
+
+/* Mengatur jarak antar input group */
+.gap-2 {
+    gap: 0.75rem !important; /* Mengatur lebar spasi pemisah antar tombol/input */
+}
+
+/* Pastikan input tidak terlalu lebar sehingga memakan tempat tombol */
+.form-control {
+    flex: 1; /* Input akan mengisi ruang yang tersisa */
+}
