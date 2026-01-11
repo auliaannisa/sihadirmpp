@@ -377,9 +377,16 @@ if(!isset($_SESSION['user']) || $_SESSION['role'] != 'peserta') header("Location
                 <?php } ?>
             </tbody>
         </table>
-           <div class="footer-text">SIHADIR MPP Dibuat oleh Aulia Annisa</div>
     </div>
 </div>
+ <footer class="text-center py-4">
+            <h6 style="font-family: 'Poppins', sans-serif; color: #2106e6ff; font-weight: 700; letter-spacing: 0.5px;">
+                Dibuat oleh Aulia Annisa (auliaannnnn_)
+            </h6>
+            <p style="color: #090142ff; font-size: 11px; opacity: 0.7; font-family: 'Inter', sans-serif;">
+                SIHADIR MPP BKPSDM 
+            </p>
+        </footer>
     </div>
 
     <script>
