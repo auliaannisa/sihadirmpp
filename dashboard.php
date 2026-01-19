@@ -254,6 +254,7 @@ if(!isset($_SESSION['user']) || $_SESSION['role'] != 'peserta') header("Location
     <div class="main-container">
         <div class="content-card">
             <h5 class="fw-bold mb-4">Input Absensi</h5>
+        
             
             <form action="proses_absen.php" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
@@ -372,6 +373,7 @@ if(!isset($_SESSION['user']) || $_SESSION['role'] != 'peserta') header("Location
                             <span><?php echo $ai_icon; ?></span>
                             <span><?php echo $status_label; ?></span>
                         </div>
+                        
                     </td>
                 </tr>
                 <?php } ?>
