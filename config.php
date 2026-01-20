@@ -1,8 +1,15 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "sihadirmpp");
-if (!$conn) { die("Koneksi Gagal: " . mysqli_connect_error()); }
+// Mengambil data dari Variables Railway secara otomatis
+$host = getenv('MYSQLHOST');
+$user = getenv('MYSQLUSER');
+$pass = getenv('MYSQLPASSWORD');
+$db   = getenv('MYSQLDATABASE');
+$port = getenv('MYSQLPORT');
 
-if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+// Melakukan koneksi ke database online Railway
+$koneksi = mysqli_connect($host, $user, $pass, $db, $port);
+
+if (!$koneksi) {
+    die("Koneksi ke database Railway gagal: " . mysqli_connect_error());
 }
 ?>
