@@ -9,6 +9,8 @@ if(!isset($_SESSION['user']) || $_SESSION['role'] != 'peserta') header("Location
     <title>SIHADIR MPP BKPSDM</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
     <style>
         :root {
             --primary-blue: #070136ff;
@@ -51,7 +53,7 @@ if(!isset($_SESSION['user']) || $_SESSION['role'] != 'peserta') header("Location
             box-shadow: 0 10px 25px rgba(15, 3, 79, 0.61);
         }
 
-        .form-label { font-weight: 700; font-size: 0.75rem; color: #0f54b5ff ; text-transform: uppercase; margin-bottom: 8px; }
+        .form-label { font-weight: 700; font-size: 0.75rem; color: #032a84ff ; text-transform: uppercase; margin-bottom: 8px; }
         
         .form-control, .form-select {
             background-color: #f7f4f5ff;
@@ -134,7 +136,7 @@ if(!isset($_SESSION['user']) || $_SESSION['role'] != 'peserta') header("Location
 
 /* Garis pemisah antar kolom di header*/
 .table-siampp th:not(:last-child) {
-    border-right: 1px solid rgba(255, 255, 255, 0.21) !important;
+    border-right: 1px solid rgba(242, 229, 229, 0.89) !important;
 }
 
 /* Baris Tabel */
@@ -146,18 +148,37 @@ if(!isset($_SESSION['user']) || $_SESSION['role'] != 'peserta') header("Location
     color: #0b025cff !important;
 }
 /* Warna Navy Gelap untuk semua tombol aksi utama */
+/* Warna Gradasi Biru untuk tombol aksi */
 .btn-navy-custom {
-    background-color: #000033 !important; /* Navy gelap sesuai gambar */
+    background: linear-gradient(135deg, #1b05e4ff 0%, #070136ff 100%) !important;
     color: white !important;
-    border-radius: 12px !important; /* Sudut membulat halus */
-    padding: 10px 20px !important;
+    border-radius: 50px !important; /* Dibuat lebih bulat (pill-shaped) */
+    padding: 10px 25px !important;
     font-weight: 600 !important;
     border: none !important;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 140px; /* Menjaga ukuran tombol agar seragam */
+    min-width: 140px;
     transition: all 0.3s ease;
+    box-shadow: 0 4px 9px rgba(27, 5, 228, 0.4); 
+}
+/* Mengatur jarak ikon agar tidak menempel dengan teks */
+.btn-navy-custom i {
+    margin-right: 10px;
+    font-size: 1.1rem;
+}
+
+.btn-navy-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(27, 5, 228, 0.5);
+    opacity: 0.9;
+}
+
+.btn-navy-custom:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(7, 1, 54, 0.5);
+    opacity: 0.9;
 }
 
 .btn-navy-custom i {
@@ -230,15 +251,111 @@ if(!isset($_SESSION['user']) || $_SESSION['role'] != 'peserta') header("Location
     text-decoration: none;
 }
 
-.btn-export { background-color: #2563eb; }
-.btn-refresh { background-color: #3b82f6; }
+.btn-export { background-color: #ebb325e2; }
+.btn-refresh { background-color: #b1da11ff; }
 
 .btn-action:hover {
     opacity: 0.9;
     transform: translateY(-1px);
     color: white;
 }
+/* Container Tombol agar di tengah */
+.method-switcher {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+
+/* Gaya Tombol Gradasi */
+.btn-method {
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: none;
+    min-width: 160px;
+    box-shadow: 0 4px 10px rgba(11, 39, 163, 0.91);
+}
+
+/* Warna saat Aktif (Gradasi Biru) */
+.btn-method.active {
+    background: linear-gradient(135deg, #1b05e4ff 0%, #070136ff 100%);
+    color: white;
+    box-shadow: 0 4px 9px hsla(246, 96%, 46%, 0.71);
+}
+
+/* Warna saat Tidak Aktif */
+.btn-method.inactive {
+    background: linear-gradient(135deg, #1b05e4ff 0%, #070136ff 100%);
+    color: white;
+    color: #f6f5f5ff;
+}
+
+.btn-method:hover {
+    transform: translateY(-2px);
+}
+/* Gaya dasar tombol metode */
+.btn-method {
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+    border: none;
+    min-width: 160px;
+    cursor: pointer;
+    background: #230bc3ff; /* Warna default saat tidak aktif */
+    color: #0f0696ff;
+}
+
+/* Gaya saat tombol AKTIF (Gradasi Biru) */
+.btn-method.active {
+    background: linear-gradient(135deg, #1b05e4ff 0%, #070136ff 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 9px hsla(246, 96%, 46%, 0.71);
+}
     </style>
+<style>
+  .button-container {
+    display: flex;
+    gap: 15px;
+    font-family: sans-serif;
+  }
+
+  .btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Jarak antara icon dan teks */
+    padding: 12px 25px;
+    border: none;
+    border-radius: 50px; /* Bentuk lonjong/pill */
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    text-decoration: none;
+    
+    /* Efek Gradasi sesuai gambar */
+    background: linear-gradient(to right, #2400ff, #1a0066, #05001a);
+    
+    /* Efek Bayangan (Shadow) */
+    box-shadow: 0 8px 15px rgba(36, 0, 255, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  /* Efek saat tombol ditekan */
+  .btn:active {
+    transform: scale(0.95);
+  }
+
+  /* Warna khusus untuk tombol Hapus (opsional jika ingin sedikit berbeda) */
+  .btn-hapus {
+    background: linear-gradient(to right, #1a00e6, #0d004d, #000000);
+  }
+  justify-content: center; /* Tengah secara horizontal */
+    align-items: center;     /* Tengah secara vertikal (jika ada tinggi) */
+</style>
 
 </head>
 <body>
@@ -253,13 +370,28 @@ if(!isset($_SESSION['user']) || $_SESSION['role'] != 'peserta') header("Location
 
     <div class="main-container">
         <div class="content-card">
-            <h5 class="fw-bold mb-4">Input Absensi</h5>
-        
-            
+        <h5 class="text-center fw-bold fst-italic mb-4" style="color: #1f06c3ff; font-size: 25px;">INPUT ABSENSI</h5>
+        <div class="method-switcher">
+        <button type="button" onclick="showManual()" id="btn-manual" class="btn-method active">
+        <i class="fas fa-edit me-2"></i> Input Manual
+        </button>
+        <button type="button" onclick="showQR()" id="btn-qr" class="btn-method inactive">
+        <i class="fas fa-qrcode me-2"></i> Scan QR Code
+        </button>
+    </div>
+
+    <hr>
+
+    <div id="qr-section" style="display:none;" class="text-center my-4">
+        <h5 class="text-primary fw-bold">Arahkan Kamera ke QR Code</h5>
+        <div id="reader" style="width: 100%; max-width: 400px; margin: auto; border-radius: 15px; overflow: hidden; border: 2px solid #1a04dcd9;"></div>
+        <p class="text-muted small mt-2">Pastikan QR Code terlihat jelas di dalam bingkai.</p>
+    </div>
+
             <form action="proses_absen.php" method="POST" enctype="multipart/form-data">
                 <div class="mb-3">
-                    <label class="form-label">Nama</label>
-                    <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama Lengkap" required>
+                <label class="form-label">Nama</label>
+                <input type="text" name="nama" class="form-control" placeholder="Masukkan Nama Lengkap" required>
                 </div>
 
                 <div class="mb-3">
@@ -297,11 +429,11 @@ if(!isset($_SESSION['user']) || $_SESSION['role'] != 'peserta') header("Location
     </button>
 </div>
                      
-                    <div class="text-center">
+                       <div class="text-center">
                         <video id="camera" autoplay playsinline></video>
                         <canvas id="canvas"></canvas>
                         <input type="hidden" name="foto_base64" id="foto_base64">
-                    </div>
+                        </div>
                 </div>
 
                 <div class="mb-3">
@@ -309,13 +441,13 @@ if(!isset($_SESSION['user']) || $_SESSION['role'] != 'peserta') header("Location
     <div class="d-flex align-items-center gap-2">
         <input type="text" id="display_lokasi" class="form-control" placeholder="Koordinat belum diambil" readonly>
         <button type="button" class="btn btn-navy-custom text-nowrap" onclick="getLocation()">
-            <i class="fas fa-map-marker-alt"> 📍</i> Ambil Lokasi
+            <i class="fas fa-map-marker-alt"></i> Ambil Lokasi
         </button>
     </div>
     <input type="hidden" name="koordinat" id="koordinat">
     <input type="hidden" name="akurasi" id="akurasi">
 </div>
-                <button type="submit" class="btn btn-primary btn-simpan" ><span class="icon">💾</span><i class="fas fa-save me-2"></i> Simpan</button>
+                <button type="submit" class="btn btn-primary btn-simpan" ><span class="icon"></span><i class="fas fa-save me-2"></i> Simpan</button>
             </form>
         </div>
 
@@ -383,7 +515,7 @@ if(!isset($_SESSION['user']) || $_SESSION['role'] != 'peserta') header("Location
 </div>
  <footer class="text-center py-4">
             <h6 style="font-family: 'Poppins', sans-serif; color: #2106e6ff; font-weight: 700; letter-spacing: 0.5px;">
-                Dibuat oleh Aulia Annisa (auliaannnnn_)
+                Dibuat oleh Aulia Annisa
             </h6>
             <p style="color: #090142ff; font-size: 11px; opacity: 0.7; font-family: 'Inter', sans-serif;">
                 SIHADIR MPP BKPSDM 
@@ -391,52 +523,45 @@ if(!isset($_SESSION['user']) || $_SESSION['role'] != 'peserta') header("Location
         </footer>
     </div>
 
+<script src="https://unpkg.com/html5-qrcode"></script>
     <script>
-    const video = document.getElementById('camera');
-const canvas = document.getElementById('canvas');
-const snap = document.getElementById('snap');
-const btnHapus = document.getElementById('btnHapus');
-const fotoBase64 = document.getElementById('foto_base64');
-const fileInput = document.getElementById('file_surat');
+        const video = document.getElementById('camera');
+        const canvas = document.getElementById('canvas');
+        const snap = document.getElementById('snap');
+        const btnHapus = document.getElementById('btnHapus');
+        const fotoBase64 = document.getElementById('foto_base64');
+        const fileInput = document.getElementById('file_surat');
 
-let stream = null;
+        let stream = null;
 
-/* AKTIFKAN KAMERA */
-navigator.mediaDevices.getUserMedia({ video: true })
-    .then(s => {
-        stream = s;
-        video.srcObject = stream;
-    })
-    .catch(() => alert("Kamera tidak aktif"));
+        /* AKTIFKAN KAMERA SELFIE */
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(s => {
+                stream = s;
+                video.srcObject = stream;
+            })
+            .catch(() => console.log("Kamera selfie tidak aktif atau diblokir"));
 
-/* AMBIL FOTO */
-snap.addEventListener('click', () => {
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    canvas.getContext('2d').drawImage(video, 0, 0);
+        /* AMBIL FOTO */
+        snap.addEventListener('click', () => {
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+            fotoBase64.value = canvas.toDataURL('image/jpeg');
+            canvas.style.display = 'block';
+            video.style.display = 'none';
+        });
 
-    fotoBase64.value = canvas.toDataURL('image/jpeg');
+        /* HAPUS FOTO */
+        btnHapus.addEventListener('click', () => {
+            const ctx = canvas.getContext('2d');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            canvas.style.display = 'none';
+            video.style.display = 'block';
+            fotoBase64.value = '';
+            fileInput.value = '';
+        });
 
-    canvas.style.display = 'block';
-    video.style.display = 'none';
-});
-
-/* 🔥 HAPUS FOTO (INI YANG KAMU BUTUHKAN) */
-btnHapus.addEventListener('click', () => {
-
-    // Reset canvas
-    const ctx = canvas.getContext('2d');
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    canvas.style.display = 'none';
-
-    // Tampilkan kamera lagi
-    video.style.display = 'block';
-
-    // Kosongkan data
-    fotoBase64.value = '';
-    fileInput.value = '';
-
-});
         function getLocation() {
             const display = document.getElementById('display_lokasi');
             display.value = "Mencari lokasi...";
@@ -450,6 +575,81 @@ btnHapus.addEventListener('click', () => {
                 }, (err) => {
                     display.value = "Gagal mengambil lokasi.";
                 });
+            }
+        }
+
+        /* LOGIKA QR CODE SCANNER */
+        let html5QrCode = null;
+
+        async function showQR() {
+            const qrSec = document.getElementById('qr-section');
+            const manualSec = document.getElementById('manual-section'); // Pastikan form manual dibungkus div id ini
+
+            if (!qrSec) return;
+
+            qrSec.style.display = 'block';
+            // Jika Anda ingin menyembunyikan form saat scan, pastikan form dibungkus <div id="manual-section">
+            if(manualSec) manualSec.style.display = 'none';
+
+            if (html5QrCode === null) {
+                html5QrCode = new Html5Qrcode("reader");
+            }
+
+            try {
+                await html5QrCode.start(
+                    { facingMode: "environment" }, 
+                    { fps: 10, qrbox: { width: 250, height: 250 } },
+                    (decodedText) => {
+    // 1. Berikan notifikasi sukses
+    alert("Data Terdeteksi!");
+
+    // 2. Parsing data dari format: Nama = Aulia Annisa;Kategori = Magang;Status = Hadir
+    const dataObj = {};
+    const parts = decodedText.split(';'); // Memecah berdasarkan titik koma
+    
+    parts.forEach(part => {
+        const [key, value] = part.split('=').map(item => item.trim());
+        if (key && value) {
+            dataObj[key.toLowerCase()] = value;
+        }
+    });
+
+    // 3. Masukkan ke kolom Nama
+    if (dataObj.nama) {
+        document.getElementsByName('nama')[0].value = dataObj.nama;
+    }
+
+    // 4. Pilih otomatis di dropdown Kategori
+    if (dataObj.kategori) {
+        const selectKategori = document.getElementsByName('kategori')[0];
+        selectKategori.value = dataObj.kategori; // Menyesuaikan value Magang/PKL/Penelitian
+    }
+
+    // 5. Pilih otomatis di dropdown Status
+    if (dataObj.status) {
+        const selectStatus = document.getElementById('status_hadir');
+        selectStatus.value = dataObj.status;
+    }
+
+    // 6. Tutup kamera dan kembali ke tampilan form manual
+    showManual();
+}
+                );
+            } catch (err) {
+                console.error("Kamera Error:", err);
+                alert("Gagal akses kamera belakang.");
+            }
+        }
+
+        function showManual() {
+            const qrSec = document.getElementById('qr-section');
+            const manualSec = document.getElementById('manual-section');
+            
+            if (qrSec) qrSec.style.display = 'none';
+            if (manualSec) manualSec.style.display = 'block';
+            
+            if (html5QrCode && html5QrCode.isScanning) {
+                html5QrCode.stop().catch(err => console.error(err));
             }
         }
     </script>

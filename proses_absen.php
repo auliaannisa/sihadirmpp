@@ -109,7 +109,7 @@ list($u_lat, $u_lon) = explode(',', $koordinat);
 $jarak = getDistance($u_lat, $u_lon, $lat_kantor, $lon_kantor);
 
 if ($jarak > $radius_maksimal && $metode_absen == "Manual") {
-    $status_ai .= " | LOKASI DI LUAR RADIUS";
+   
 }
 
 /* =========================
